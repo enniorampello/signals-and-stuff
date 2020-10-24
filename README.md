@@ -1,4 +1,4 @@
-##TODOs
+## TODOs
 
 - [ ] Implement Fourier series approximation
 - [ ] Implement complex signals
