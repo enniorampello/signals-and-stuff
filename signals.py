@@ -1,13 +1,14 @@
 import numpy as np
 from numpy import pi
 import math
+import cmath
 
-'''
+"""
 Library of known signals. They work both for discrete and continuous operations.
 
 Hint: the "args" that you see in every function is used to generalize the signals 
 for calculation purposes (see signal_ops.py and scipy.integrate.quad docs).
-'''
+"""
 
 
 def delta(x, args=()):
@@ -80,9 +81,18 @@ def gaus(x, args=()):
     return math.exp(-(x**2)/(2*T**2))
 
 
-'''
-import numpy as np
-import matplotlib.pyplot as plt
-import signals
-x = np.arange(-2,2.1,.01)
-'''
+
+def complex_exp(x, args=(1,), rotating=False):
+    """
+    :return: access to the returned value must be done separately, i.e. doing z.real
+    or z.imag. You can also use cmath to perform more complex operations.
+    """
+    omega = args[0]
+    if rotating:
+        frequency = omega
+        re = math.cos(frequency * 2*pi * x)
+        im = math.sin(frequency * 2*pi * x)
+    else:
+        re = math.cos(omega*x)
+        im = math.sin(omega*x)
+    return complex(re, im)
